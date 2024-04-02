@@ -3,24 +3,29 @@ import { graphqlSelector } from "../generic_graphql";
 
 export class updateProjectV2ItemFieldValue extends graphqlSelector{
 
-    graphQLObject = {
+    graphQLOutput = {
         id: true,
         name: true,
         projectDetails: {
             startDate: true,
             endDate: true
         },
-        unionF,
-        __on: { // Handling union types
+        __on: {
             SoftwareProject: {
-                repositoryUrl: true
+                repositoryUrl: true,
+                ppp:{
+                    id: true,
+                    name: true
+                }
             },
             MarketingProject: {
                 budget: true
             }
         }
     };
-    graphQLGenerator(){
-        return this.graphQLRequestAsString(this.graphQLObject);
+
+    generateGraphQL(){
+        this.type = "mutation";
+        return this.generateGraphQLQuery(this.graphQLOutput);
     }
 }

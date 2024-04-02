@@ -1,22 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProjectV2ItemFieldValue = void 0;
-const union_gen_example_1 = require("./union_gen_example");
 const generic_graphql_1 = require("../generic_graphql");
 class updateProjectV2ItemFieldValue extends generic_graphql_1.graphqlSelector {
     constructor() {
         super(...arguments);
-        this.graphQLObject = {
+        this.graphQLOutput = {
             id: true,
             name: true,
             projectDetails: {
                 startDate: true,
                 endDate: true
             },
-            unionF: union_gen_example_1.unionF,
             __on: {
                 SoftwareProject: {
-                    repositoryUrl: true
+                    repositoryUrl: true,
+                    ppp: {
+                        id: true,
+                        name: true
+                    }
                 },
                 MarketingProject: {
                     budget: true
@@ -24,8 +26,9 @@ class updateProjectV2ItemFieldValue extends generic_graphql_1.graphqlSelector {
             }
         };
     }
-    graphQLGenerator() {
-        return this.graphQLRequestAsString(this.graphQLObject);
+    generateGraphQL() {
+        this.type = "mutation";
+        return this.generateGraphQLQuery(this.graphQLOutput);
     }
 }
 exports.updateProjectV2ItemFieldValue = updateProjectV2ItemFieldValue;

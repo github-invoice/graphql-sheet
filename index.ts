@@ -39,8 +39,8 @@ async function main(){
     const userSelectedFields = ['projectV2Item.id', 'projectV2Item.id.status'];
     // const userFilteredFields = filterFieldsForSelection(availableFields, userSelectedFields);
     const userFilteredFields = filterField(availableFields, userSelectedFields);
-    console.log(availableFields.subFields![1].subFields![0]);
-    console.log(availableFields.subFields![1].subFields![0].subFields);
+    // console.log(availableFields.subFields![1].subFields![0]);
+    // console.log(availableFields.subFields![1].subFields![0].subFields);
     // console.log(userFilteredFields)
     // const mutationStringFiltered = generateMutationString(userFilteredFields!);
     // console.log(mutationStringFiltered)
@@ -53,8 +53,8 @@ async function main(){
 
     // Example generic graphql selector
     let test = new updateProjectV2ItemFieldValue();
-    test.graphQLObject.id = false;
-    const gql = test.graphQLGenerator();
+    test.graphQLOutput.id = false;
+    const gql = test.generateGraphQL();
     console.log(gql);
 
 
